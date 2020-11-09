@@ -1,12 +1,22 @@
 .navbar-syncabuddy {
   justify-content: space-between;
-  background: $background-color;
+  background: #252525;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-brand{
+  color: #F4F4F4;
+  font-family: 'Anton', sans-serif;
+}
+
+.navbar-syncabuddy .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.nav-link {
+  color: #F4F4F4;
+  font-family: 'Anton', sans-serif;
+}
+
+.fa-user-circle {
+  color: #F4F4F4;
 }
