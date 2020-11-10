@@ -5,6 +5,10 @@ class AttendancePolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    true
+  end
+
   def destroy?
     record.user == user
   end

@@ -12,7 +12,9 @@
         <p class="desc">Max. Participants: <%= @match.max_attendent %><br>
           Current Participants: <%= @match.max_attendent - @match.min_attendent %></p>
         <div class="buttons">
-          <button class="add">Join</button>
+          <%= simple_form_for [@match, @attendance] do |f| %>
+            <%= f.submit label: "Join", class: "add join-button" %>
+          <% end %>
         </div>
       </div>
     </div>
