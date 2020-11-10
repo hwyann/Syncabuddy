@@ -1,0 +1,88 @@
+$black: #252525;
+$light: #E0C9CB;
+$tan: #C3A1A0;
+$pink: #D9AAB7;
+$rose: #BA7E7E;
+$dark: #4E4E4E;
+$white: #EDECEC;
+$orange: #F95738;
+
+
+.show-card-background {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+  height: 60vh;
+  background: $black;
+  box-shadow: 5px 5px 15px rgba($orange, .5);
+  border-radius: 10px;
+}
+
+.show-card-background p {
+  font-size: 16px;
+  color: $orange;
+  letter-spacing: 1px;
+}
+
+.show-card-background h1 {
+  font-size: 36px;
+  color: $white;
+  margin-top: -5px;
+}
+
+.show-card-background h2 {
+  color: $orange;
+  margin-top: -5px;
+}
+
+.show-card-background img {
+  width: 40%;
+  margin-top: 47px;
+}
+
+.product {
+  position: absolute;
+  width: 52%;
+  height: 100%;
+  top: 10%;
+  left: 48%;
+}
+
+.desc {
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 17px;
+  color: $white;
+  font-size: 16px;
+  line-height: 1.6em;
+  margin-right: 25px;
+  text-align: justify;
+}
+
+button {
+  background: darken($white, 10%);
+  padding: 10px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  margin: -1px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $dark;
+  cursor: pointer;
+  &:hover {
+    background: $orange;
+    transition: all .4s ease-in-out;
+  }
+}
+
+.add {
+  width: 67%;
+}
+
+.focus{
+  background: $rose;
+  color: $white;
+}
