@@ -10,12 +10,16 @@
         <h2><%= @match.location %></h2>
         <p class="desc"><%= @match.description %></p>
         <p class="desc">Max. Participants: <%= @match.max_attendent %><br>
-          Current Participants: <%= @match.max_attendent - @match.min_attendent %></p>
-        <div class="buttons">
+          Current Participants: <%= @match.attendances.count %></p>
+        <% if @match.attendances.any? { |attendance| attendance.user == current_user } %>
+          <p>You have already signed up to this match</p>
+        <% elsif @match.attendances.count == @match.max_attendent  %>
+          <p>Sorry, Max number of participants reached</p>
+        <% else %>
           <%= simple_form_for [@match, @attendance] do |f| %>
             <%= f.submit "Join", class: "add join-button" %>
           <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
