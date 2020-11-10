@@ -1,10 +1,11 @@
 .navbar-syncabuddy {
   justify-content: space-between;
   background: #252525;
+  color: $white;
 }
 
 .navbar-brand{
-  color: #F4F4F4;
+  color: $white;
   font-family: 'Anton', sans-serif;
 }
 
@@ -13,10 +14,9 @@
 }
 
 .nav-link {
-  color: #F4F4F4;
   font-family: 'Anton', sans-serif;
+  color: $white;
 }
 
 .fa-user-circle {
-  color: #F4F4F4;
 }
