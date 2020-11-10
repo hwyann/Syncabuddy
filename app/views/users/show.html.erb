@@ -1,2 +1,22 @@
-<h1>hello</h1>
-<h2><%= current_user %></h2>
+<h1 style="background-color: red">Current Login user: <%= current_user.nickname %></h1>
+<div class="user">
+<h2>Userpage: <%= @user.nickname %></h2>
+<h1>Upcoming:</h1>
+<div class="attendance-cards">
+  <% @user.attendances.each do |attendance| %>
+    <p><%= attendance.match.date %></p>
+    <p><%= attendance.match.description %></p>
+    <p>ID: <%= attendance.id %></p>
+    <% if policy(attendance).destroy? %>
+      <%= link_to 'cancel', attendance_path(attendance), method: :delete %>
+    <% end %>
+    <p>Host: <%= attendance.match.user.nickname %></p>
+  <% end %>
+</div>
+<h1>Hosting:</h1>
+<div class="owner-cards">
+  <% @user.matches.each do |match| %>
+    <p><%= match.date %></p>
+    <p><%= match.description %></p>
+  <% end %>
+</div>
