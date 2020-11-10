@@ -13,3 +13,12 @@
 @import "pages/index";
 
 
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: $white;
+}
+
+a:hover {
+  color: $orange;
+}
