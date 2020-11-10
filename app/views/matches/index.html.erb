@@ -1,11 +1,23 @@
-<h1>INDEX page</h1>
-<p>should be able to see all matches regardless of authorization / authentication</p>
-<% @matches.each do |match| %>
-  <ul>
-    <li>Sport: <%= match.sport %></li>
-    <li>Location: <%= match.location %></li>
-    <li>Description: <%= match.description %></li>
-    <li>Creator: <%= match.user.nickname %></li>
-    <li><%= link_to "go to match", match_path(match)  %></li>
-  </ul>
-<% end %>
+<div class="index-container">
+  <h1>All the Matches</h1>
+  <div class="card-matches">
+    <% @matches.each do |match| %>
+      <div class="card-match-wrap">
+        <%= link_to match_path(match), class: "card-match" do %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <div class="card-match-infos">
+            <div>
+              <h2>Sport: <%= match.sport %></h2>
+            </div>
+            <div>
+              <p>Hosted by: <%= match.user.nickname %></p>
+            </div>
+            <div>
+              <p>Location: <%= match.location %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
