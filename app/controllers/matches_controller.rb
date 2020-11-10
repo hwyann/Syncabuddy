@@ -6,6 +6,7 @@ class MatchesController < ApplicationController
   end
 
   def show
+    @attendance = Attendance.new
     @match = Match.find(params[:id])
     authorize @match
   end
