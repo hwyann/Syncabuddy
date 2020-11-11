@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "destroying all the Attendences..."
+
+Attendance.destroy_all
+
 puts "destroying all the matches..."
 
 Match.destroy_all
@@ -37,9 +41,9 @@ puts "...created #{User.count} users!"
 
 puts "creating matches..."
 
-SPORTS = %W[Tennis Football Snowboard Hiking Golf Basketball]
-LOCATION = %W[Meguro Shibuya Gotanda Ebisu Yoyogi]
-5.times do
+SPORTS = %W[Tennis Football Snowboard Hiking Golf Basketball Darts Bowling]
+LOCATION = %W[Meguro Shibuya Gotanda Ebisu Yoyogi Shinjuku Toyosu Harumi Machida]
+15.times do
   Match.create!(
     user_id: rand(User.first.id..User.last.id),
     date: Date.today + rand(5..10),

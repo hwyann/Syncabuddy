@@ -3,11 +3,19 @@ class MatchesController < ApplicationController
 
   def index
     @matches = policy_scope(Match)
+    @markers = @matches.geocoded.map do |match|
+      {
+        lat: match.latitude,
+        lng: match.longitude
+      }
+    end
   end
 
   def show
     @attendance = Attendance.new
     @match = Match.find(params[:id])
     authorize @match
+
+    @marker = [{ lat: @match.latitude, lng: @match.longitude }]
   end
 end
