@@ -2,6 +2,7 @@
   justify-content: space-between;
   background: #252525;
   color: $white;
+  align-items: center;
 }
 
 .navbar-brand {
@@ -17,6 +18,36 @@
   color: $white;
 }
 
-.user-icon:hover {
-  color: $orange;
+.nav-browse {
+  letter-spacing: 2px;
+}
+
+.dropdown-menu {
+  background-color: $background-color;
+  // background: linear-gradient(to right, $red, purple);
+  border: 1px $white solid
+}
+
+.dropdown-item {
+  color: $white;
+  font-family: $body-font;
+
+  &:hover {
+    background-color: $white;
+    color: $orange;
+  }
+}
+
+
+.navbar-lewagon {
+  justify-content: space-between;
+  background: $white;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
 }
