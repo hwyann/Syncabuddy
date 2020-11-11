@@ -10,8 +10,8 @@
               <div class="card-match-infos">
                 <h2><%= match.sport %></h2>
                 <p><%= match.date.strftime("%b %e, %l:%M %p") %></p>
-                <p>Hosted by: <%= match.user.nickname %></p>
-                <p>Location: <%= match.location %></p>
+                <p>Hosted by: <%= match.user.nickname %><br>
+                  Location: <%= match.location %></p>
               </div>
             </div>
           <% end %>
@@ -25,4 +25,3 @@
     </div>
   </div>
 </div>
-
