@@ -18,8 +18,8 @@
                 <%= link_to match_path(attendance.match) do %>
                   <h2><%= attendance.match.date.strftime("%b %e, %l:%M %p") %></h2>
                 <% end %>
-                <p>Hosted by: <%= attendance.match.user.nickname %></p>
                 <p>Location: <%= attendance.match.location %></p>
+                <p>Hosted by: <%= attendance.match.user.nickname %></p>
                  <% if policy(attendance).destroy? %>
                   <%= link_to 'cancel', attendance_path(attendance), method: :delete, class: 'btn btn-danger' %>
                 <% end %>
