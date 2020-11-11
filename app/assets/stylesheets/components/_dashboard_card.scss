@@ -22,9 +22,39 @@ ul {
   padding: 0;
 }
 
+.dashboard-title {
+    color: #EDECEC;
+    margin-top: 24px;
+    font-size: 5em;
+}
+
+.dashboard-tag {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border-radius: 1em;
+  color: white;
+  padding: 4px 8px;
+  p {
+    font-size: 0.7em;
+    margin: 0;
+    font-style: italic;
+  }
+}
+
+.dashboard-tag-pending {
+  background-color: rgba(244, 244, 244,0.2);
+
+}
+
+.dashboard-tag-confirmed {
+  background-color: rgba(0, 255, 0, 0.6);
+}
+
 
 
 .item {
+  position: relative;
   width: 100%;
   scroll-snap-align: center;
   padding: calc(var(--gutter) / 2 * 1.5);
