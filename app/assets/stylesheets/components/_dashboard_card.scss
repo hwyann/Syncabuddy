@@ -24,7 +24,7 @@ ul {
 .dashboard-title {
     color: #EDECEC;
     margin-top: 24px;
-    font-size: 5em;
+    font-size: 3em;
     margin-left: 16px;
 }
 
@@ -51,6 +51,24 @@ ul {
   background-color: rgba(0, 255, 0, 0.6);
 }
 
+.dashboard-btn-caution {
+  background-color: $background-color;
+  border: none;
+  color: rgba(255, 198, 90,0.3);
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  transition: 0.2s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: rgba(255, 198, 90,0.8);
+  }
+}
+
 
 
 .item {
@@ -63,7 +81,7 @@ ul {
   justify-content: center;
   align-items: center;
   $border: 3px;
-  color: $orange;
+  color: $white;
   background: $background-color;
   background-clip: padding-box; /* !importanté */
   border: solid $border transparent; /* !importanté */
@@ -81,6 +99,10 @@ ul {
     -webkit-transition: margin 0.2s ease-out;
     -moz-transition: margin 0.2s ease-out;
     -o-transition: margin 0.2s ease-out;
+
+    a {
+      color: $red;
+    }
 }
 
 .item_background {
