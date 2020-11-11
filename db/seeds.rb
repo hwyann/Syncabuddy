@@ -43,11 +43,20 @@ puts "creating matches..."
 
 SPORTS = %W[Tennis Football Snowboard Hiking Golf Basketball Darts Bowling]
 LOCATION = %W[Meguro Shibuya Gotanda Ebisu Yoyogi Shinjuku Toyosu Harumi Machida]
+DESCRIPTION = [
+  'Hello guys, this is Tomo.
+  Let’s enjoy practicing and playing together.
+  Your level does not matter.',
+  'Hi we are looking for more people to join us. Lets have a fun game and shake out those rusty legs.',
+  'Check out this event and see if you are interested. Let’s enjoy practicing and playing together.
+    Your level does not matter.'
+]
+
 15.times do
   Match.create!(
     user_id: rand(User.first.id..User.last.id),
-    date: Date.today + rand(5..10),
-    description: Faker::Lorem.paragraph(sentence_count: 2),
+    date: DateTime.new(2020, rand(1..12), rand(1..28), rand(10..20), 0, 0),
+    description: DESCRIPTION.sample,
     location: LOCATION.sample,
     sport: SPORTS.sample,
     min_attendent: rand(1..2),
