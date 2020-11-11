@@ -57,7 +57,7 @@
   background-color: black;
   height: 80%;
   width: 100%;
-  // object-fit: cover;
+  object-fit: cover;
   padding: 12px;
   border-radius: inherit;
 }
@@ -84,7 +84,8 @@
 
 .card-match .card-match-infos {
   padding: 12px;
-  background: rgba(0,0,0,0.0);}
+  background: rgba(0,0,0,0.0);
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
