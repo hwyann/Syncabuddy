@@ -15,5 +15,7 @@ class MatchesController < ApplicationController
     @attendance = Attendance.new
     @match = Match.find(params[:id])
     authorize @match
+
+    @marker = [{ lat: @match.latitude, lng: @match.longitude }]
   end
 end
