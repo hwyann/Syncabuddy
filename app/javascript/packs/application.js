@@ -40,7 +40,8 @@ initSweetalert('#sweet-alert-demo', {
     const link = document.querySelector('#delete-link');
     link.click();
   }
-});
+}
+);
 
 // import { initSelect2 } from '../components/init_select2';
 

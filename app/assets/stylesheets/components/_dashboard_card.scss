@@ -2,7 +2,6 @@
   --gutter: 20px;
 }
 
-
 .scrolling-wrapper{
   overflow-x: auto;
 }
@@ -26,6 +25,26 @@ ul {
     margin-top: 24px;
     font-size: 3em;
     margin-left: 16px;
+}
+
+.dashboard-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-date, .dashboard-location , .dashboard-host{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  margin-right: 12px;
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  h2 {
+    margin: 0;
+  }
 }
 
 .dashboard-tag {
@@ -68,8 +87,6 @@ ul {
     color: rgba(255, 198, 90,0.8);
   }
 }
-
-
 
 .item {
   position: relative;

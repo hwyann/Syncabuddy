@@ -1,57 +1,43 @@
 <h1 class="dashboard-title">Upcoming for <%= @user.nickname %> :</h1>
 <div class="container-fluid">
-<<<<<<< HEAD
-    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-      <% @user.attendances.sort_by{|obj| obj.match.date}.each do |attendance| %>
-        <div class="col-12 col-md-6 col-lg-3 ml-4">
-            <div class="item">
-              <% if attendance.status == 'pending' %>
-              <div class="dashboard-tag dashboard-tag-pending">
-                <p>Pending</p>
-                </div>
-              <% else %>
-              <div class="dashboard-tag dashboard-tag-confirmed">
-                <!-- <i class="fas fa-check"></i> -->
-                <p>Confirmed</p>
-              </div>
-              <% end %>
-              <h2><%= attendance.match.sport %></h2>
-                <%= link_to match_path(attendance.match) do %>
-                  <h2><%= attendance.match.date.strftime("%b %e, %l:%M %p") %></h2>
-                <% end %>
-                <p>Location: <%= attendance.match.location %></p>
-                <p>Hosted by: <%= attendance.match.user.nickname %></p>
-                 <% if policy(attendance).destroy? %>
-                  <button id="sweet-alert-demo" class="dashboard-btn-caution"><i class="fas fa-exclamation-triangle"></i></button>
-                  <%= link_to "", attendance_path(attendance), method: :delete, id: "delete-link", class: "hidden" %>
-                <% end %>
-=======
   <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-    <% @user.attendances.sort_by{|obj| obj.match.date}.each do |attendance|  %>
-      <div class="col-12 col-md-6 col-lg-3 ml-4">
-        <div class="item">
-          <% if attendance.status == 'pending' %>
-            <div class="dashboard-tag dashboard-tag-pending">
-              <p>Pending</p>
->>>>>>> a6a5153029ed1d6971c46d563ee38e7179d5f0b9
-            </div>
-          <% else %>
-            <div class="dashboard-tag dashboard-tag-confirmed">
-              <!-- <i class="fas fa-check"></i> -->
-              <p>Confirmed</p>
-            </div>
-          <% end %>
-          <h2><%= attendance.match.sport %></h2>
-          <%= link_to match_path(attendance.match) do %>
-            <h2><%= attendance.match.date.strftime("%b %e, %l:%M %p") %></h2>
-          <% end %>
-          <p>Location: <%= attendance.match.location %></p>
-          <p>Hosted by: <%= attendance.match.user.nickname %></p>
+    <% @user.attendances.sort_by{|obj| obj.match.date}.each do |attendance| %>
+    <div class="col-12 col-md-6 col-lg-3 ml-4">
+      <div class="item">
+        <% if attendance.status == 'pending' %>
+        <div class="dashboard-tag dashboard-tag-pending">
+          <p>Pending</p>
+        </div>
+        <% else %>
+        <div class="dashboard-tag dashboard-tag-confirmed">
+          <p>Confirmed</p>
+        </div>
+        <% end %>
+        <h2><%= attendance.match.sport %></h2>
+        <div class="dashboard-card">
+          <div class="dashboard-date">
+            <%= link_to match_path(attendance.match) do %>
+            <h2><%= attendance.match.date.strftime("%b %e,") %></h2>
+            <h2><%= attendance.match.date.strftime("l:%M %p") %></h2>
+
+            <% end %>
+          </div>
+          <div class="dashboard-location">
+            <p>Location: </p>
+            <p><%= attendance.match.location %></p>
+          </div>
+          <div class="dashboard-host">
+            <p>Hosted by: </p>
+            <p><%= attendance.match.user.nickname %></p>
+          </div>
           <% if policy(attendance).destroy? %>
-            <%= link_to 'cancel', attendance_path(attendance), method: :delete, class: 'btn btn-danger' %>
+          <button id="sweet-alert-demo" class="dashboard-btn-caution"><i
+              class="fas fa-exclamation-triangle"></i></button>
+          <%= link_to "", attendance_path(attendance), method: :delete, id: "delete-link", class: "hidden" %>
           <% end %>
         </div>
       </div>
+    </div>
     <% end %>
   </div>
 </div>
