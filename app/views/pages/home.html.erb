@@ -6,3 +6,25 @@
     <% end %>
   </div>
 </div>
+<div class="index-container">
+  <h2>Featured Matches in Tokyo</h2>
+  <div class="card-matches">
+    <% @matches.first(3).each do |match| %>
+      <div class="card-match-wrap">
+        <%= link_to match_path(match), class: "card-match" do %>
+          <div class="card-background-black">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-match-infos">
+              <div>
+                <h2><%= match.sport %></h2>
+              </div>
+              <p>Hosted by: <%= match.user.nickname %><br>
+                Location: <%= match.location %></p>
+              <p>When: <%= match.date.strftime("%b %e, %l:%M %p") %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
