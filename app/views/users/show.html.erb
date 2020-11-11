@@ -1,22 +1,31 @@
-<h1 style="background-color: red">Current Login user: <%= current_user.nickname %></h1>
-<div class="user">
-<h2>Userpage: <%= @user.nickname %></h2>
-<h1>Upcoming:</h1>
-<div class="attendance-cards">
-  <% @user.attendances.each do |attendance| %>
-    <p><%= attendance.match.date %></p>
-    <p><%= attendance.match.description %></p>
-    <p>ID: <%= attendance.id %></p>
-    <% if policy(attendance).destroy? %>
-      <%= link_to 'cancel', attendance_path(attendance), method: :delete %>
-    <% end %>
-    <p>Host: <%= attendance.match.user.nickname %></p>
-  <% end %>
+<h1 class="dashboard-title">Upcoming :</h1>
+<div class="container-fluid">
+    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+      <% @user.attendances.each do |attendance| %>
+        <div class="col-12 col-md-6 col-lg-3 ml-4">
+            <div class="item">
+              <% if attendance.status == 'pending' %>
+              <div class="dashboard-tag dashboard-tag-pending">
+                <p>Pending</p>
+                </div>
+              <% else %>
+              <div class="dashboard-tag dashboard-tag-confirmed">
+                <!-- <i class="fas fa-check"></i> -->
+                <p>Confirmed</p>
+              </div>
+              <% end %>
+              <h2><%= attendance.match.sport %></h2>
+                <%= link_to match_path(attendance.match) do %>
+                  <h2><%= attendance.match.date.strftime("%b %e, %l:%M %p") %></h2>
+                <% end %>
+                <p>Hosted by: <%= attendance.match.user.nickname %></p>
+                <p>Location: <%= attendance.match.location %></p>
+                 <% if policy(attendance).destroy? %>
+                  <%= link_to 'cancel', attendance_path(attendance), method: :delete, class: 'btn btn-danger' %>
+                <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
 </div>
-<h1>Hosting:</h1>
-<div class="owner-cards">
-  <% @user.matches.each do |match| %>
-    <p><%= match.date %></p>
-    <p><%= match.description %></p>
-  <% end %>
-</div>
+
