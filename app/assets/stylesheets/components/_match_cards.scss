@@ -54,7 +54,8 @@
   opacity: 1;
   text-decoration: none;
   cursor:pointer;
-  margin-top: 10px;
+  transform: translateY(-8px);
+  transition: 0.3s ease-out;
 }
 
 .card-background-black {

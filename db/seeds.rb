@@ -32,16 +32,16 @@ User.create!(
 )
 
 User.create!(
-  email: 'test@dummy.com',
+  email: 'taku@gmail.com',
   password: 'password',
-  nickname: 'test',
+  nickname: 'taku',
 )
 
 puts "...created #{User.count} users!"
 
 puts "creating matches..."
 
-SPORTS = %W[Tennis Football Snowboard Hiking Golf Basketball Darts Bowling]
+SPORTS = %W[Tennis Football Snowboard Hiking Golf Basketball Darts Bowling Beach\ Volleyball]
 LOCATION = %W[Meguro Shibuya Gotanda Ebisu Yoyogi Shinjuku Toyosu Harumi Machida]
 DESCRIPTION = [
   'Hello guys, this is Tomo.
@@ -55,7 +55,7 @@ DESCRIPTION = [
 15.times do
   Match.create!(
     user_id: rand(User.first.id..User.last.id),
-    date: DateTime.new(2020, rand(1..12), rand(1..28), rand(10..20), 0, 0),
+    date: DateTime.new(2020, rand(11..12), rand(1..28), rand(10..20), 0, 0),
     description: DESCRIPTION.sample,
     location: LOCATION.sample,
     sport: SPORTS.sample,
