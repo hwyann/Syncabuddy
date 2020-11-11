@@ -1,30 +1,29 @@
-<div class="show-background p-3">
-  <div class="container">
-    <div class="show-card-background">
-      <div class="images">
-        <img src="http://mistillas.cl/wp-content/uploads/2018/04/Nike-Epic-React-Flyknit-%E2%80%9CPearl-Pink%E2%80%9D-01.jpg" />
-      </div>
-      <div class="product">
-        <p><%= @match.sport %></p>
-        <h1><%= @match.date.strftime("%b %e, %l:%M %p") %></h1>
-        <h2><%= @match.location %></h2>
-        <p class="desc"><%= @match.description %></p>
-        <p class="desc">Max. Participants: <%= @match.max_attendent %><br>
-          Current Participants: <%= @match.attendances.count %></p>
-        <% if @match.attendances.any? { |attendance| attendance.user == current_user } %>
-          <p>You have already signed up to this match</p>
-        <% elsif @match.attendances.count == @match.max_attendent  %>
-          <p>Sorry, Max number of participants reached</p>
-        <% else %>
-          <%= simple_form_for [@match, @attendance] do |f| %>
-            <%= f.submit "Join", class: "add join-button" %>
-          <% end %>
+<div class="container">
+  <div class="show-card-background mt-3">
+    <div id="map"
+     style="width: 40%; height: 480px;"
+     data-markers="<%= @marker.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <div class="product">
+      <p><%= @match.sport %></p>
+      <h1><%= @match.date.strftime("%b %e, %l:%M %p") %></h1>
+      <h2><%= @match.location %></h2>
+      <p class="desc"><%= @match.description %></p>
+      <p class="desc">Max. Participants: <%= @match.max_attendent %><br>
+        Current Participants: <%= @match.attendances.count %></p>
+      <% if @match.attendances.any? { |attendance| attendance.user == current_user } %>
+        <p>You have already signed up to this match</p>
+      <% elsif @match.attendances.count == @match.max_attendent  %>
+        <p>Sorry, Max number of participants reached</p>
+      <% else %>
+        <%= simple_form_for [@match, @attendance] do |f| %>
+          <%= f.submit "Join", class: "add join-button" %>
         <% end %>
-      </div>
+      <% end %>
     </div>
-    <br>
-    <%= link_to matches_path do %>
-      <p>see all matches</p>
-    <% end %>
   </div>
+  <br>
+  <%= link_to matches_path do %>
+    <p>see all matches</p>
+  <% end %>
 </div>
