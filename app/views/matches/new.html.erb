@@ -1,4 +1,5 @@
-<div class="container">
+<div class="form-box">
+  <h2>Post a new match</h2>
   <%= simple_form_for(@match) do |f| %>
     <%= f.input :sport, collection: Match::SPORTS %>
     <%= f.input :date %>
