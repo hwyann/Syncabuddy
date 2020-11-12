@@ -1,5 +1,5 @@
 .swal-overlay {
-  filter: blur(10px);
+  background-color: $white;
 }
 
 body.swal2-shown>[aria-hidden="true"] {
