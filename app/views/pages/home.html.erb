@@ -18,15 +18,17 @@
       <div class="card-match-wrap">
         <%= link_to match_path(match), class: "card-match" do %>
           <div class="card-background-black">
-            <% url = "https://loremflickr.com/320/240/#{match.sport},ball/all?random=#{rand(1..500)}" %>
-            <img src=<%= url %> />
+            <% if match.photo.attached? %>
+              <%= cl_image_tag match.photo.key %>
+            <% else %>
+              <% url = "https://loremflickr.com/320/240/#{match.sport},ball/all?random=#{rand(1..500)}" %>
+              <img src=<%= url %> />
+            <% end %>
             <div class="card-match-infos">
-              <div>
-                <h2><%= match.sport %></h2>
-              </div>
-              <p>Hosted by: <%= match.user.nickname %><br>
-                Location: <%= match.location %></p>
-              <p>When: <%= match.date.strftime("%b %e, %l:%M %p") %></p>
+              <p><%= match.sport %><br>
+                Hosted by: <%= match.user.nickname %></p>
+              <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
+              <h2><%= match.location %></h2>
             </div>
           </div>
         <% end %>

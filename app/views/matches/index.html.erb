@@ -13,10 +13,10 @@
                 <img src=<%= url %> />
               <% end %>
               <div class="card-match-infos">
-                <h2><%= match.sport %></h2>
-                <p><%= match.date.strftime("%b %e, %l:%M %p") %></p>
-                <p>Hosted by: <%= match.user.nickname %><br>
-                  Location: <%= match.location %></p>
+                <p><%= match.sport %><br>
+                  Hosted by: <%= match.user.nickname %></p>
+                <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
+                <h2><%= match.location %></h2>
               </div>
             </div>
           <% end %>
