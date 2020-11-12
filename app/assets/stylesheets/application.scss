@@ -13,7 +13,6 @@
 @import "components/index";
 @import "pages/index";
 
-
 a {
   text-decoration: none;
   display: inline-block;
@@ -22,4 +21,8 @@ a {
 
 a:hover {
   color: $orange;
+}
+
+.main {
+  padding-bottom: 120px;
 }
