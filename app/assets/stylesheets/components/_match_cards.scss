@@ -1,3 +1,4 @@
+
 .index-container h1 {
   color: $white;
   letter-spacing: 4px
@@ -62,10 +63,10 @@
 
 .card-background-black {
   background-color: $background-color;
-  height: 80%;
+  height: 100%;
   width: 100%;
   object-fit: cover;
-  padding: 12px;
+  padding: 8px;
   border-radius: inherit;
 }
 
@@ -75,24 +76,31 @@
   object-fit: cover;
   border-radius: inherit;
 }
+.card-match h1 {
+  font-size: 18px;
+  color: $white;
+}
 
 .card-match h2 {
-  font-size: 24px;
+  font-size: 18px;
   margin: 0;
   opacity: 0.8;
   line-height: 1.6;
+  color: $orange;
+  text-transform: uppercase;
+  letter-spacing: 3px
 }
 
 .card-match p {
   font-size: 16px;
   font-family: $body-font;
-  color: $white;
+  color: $orange;
   opacity: 0.8;
   line-height: 100%;
 }
 
 .card-match .card-match-infos {
-  padding: 12px;
+  padding: 8px;
   background: rgba(0,0,0,0.0);
 }
 

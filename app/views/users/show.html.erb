@@ -1,25 +1,66 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
+  <li clss="nav-item">
     <a class="nav-link active" id="play-tab" data-toggle="tab" href="#play" role="tab" aria-controls="play" aria-selected="true">Play</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="host-tab" data-toggle="tab" href="#host" role="tab" aria-controls="host" aria-selected="false">Host</a>
   </li>
 </ul>
-<!-- All tab content under here -->
 <div class="tab-content" id="myTabContent">
-  <!-- Content for Play Tab -->
   <div class="tab-pane fade show active" id="play" role="tabpanel" aria-labelledby="play-tab">
-    <!-- Upcoming Matches to be played -->
     <h1 class="dashboard-title">Upcoming for <%= @user.nickname %> :</h1>
     <div class="container-fluid">
       <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-        <%= render "shared/current-matches" %>
+        <% @user.attendances.sort_by{|obj| obj.match.date}.each do |attendance| %>
+          <div class="col-12 col-md-6 col-lg-3 ml-4">
+            <div class="item">
+              <% if attendance.status == 'pending' %>
+                <div class="dashboard-tag dashboard-tag-pending">
+                  <p>Pending</p>
+                </div>
+              <% else %>
+                <div class="dashboard-tag dashboard-tag-confirmed">
+                  <p>Confirmed</p>
+                </div>
+              <% end %>
+              <h2><%= attendance.match.sport %></h2>
+              <div class="dashboard-card">
+                <div class="dashboard-date">
+                  <%= link_to match_path(attendance.match) do %>
+                    <h2><%= attendance.match.date.strftime("%b %e,") %></h2>
+                    <h2><%= attendance.match.date.strftime("l:%M %p") %></h2>
+                  <% end %>
+                </div>
+                <div class="dashboard-location">
+                  <p>Location: </p>
+                  <p><%= attendance.match.location %></p>
+                </div>
+                <div class="dashboard-host">
+                  <p>Hosted by: </p>
+                  <p><%= attendance.match.user.nickname %></p>
+                </div>
+                <% if policy(attendance).destroy? %>
+                  <button id="sweet-alert-demo" class="dashboard-btn-caution">
+                    <i class="fas fa-ellipsis-v"></i></button>
+                  <%= link_to "", attendance_path(attendance), method: :delete, id: "delete-link", class: "hidden" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <!-- Matches already played -->
-      <h1 class="dashboard-title">Matches played:</h1>
+    </div>
+    <h1 class="dashboard-title">Matches played:</h1>
+    <div class="container-fluid">
       <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-        <%= render "shared/played-matches" %>
+        <div class="col-12 col-md-6 col-lg-3 ml-4">
+          <div class="item-done">
+            <h2>Football</h2>
+            <h2 style="color: #EDECEC;">Oct 16, 4:00 PM</h2>
+            <p>Location: Gunma</p>
+            <p>Hosted by: Mary Poppins</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -35,12 +76,59 @@
     <h1 class="dashboard-title">Matches <%= @user.nickname %> is hosting:</h1>
     <div class="container-fluid">
       <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-        <%= render "shared/host-matches" %>
+        <% @user.matches.sort_by{ |match| match.date }.each do |match| %>
+          <% if match.date >= Date.today %>
+            <div class="col-12 col-md-6">
+              <div class="show-card-background-owner mt-3 mx-5">
+                <div class="product-owner">
+                  <p><%= match.sport %></p>
+                  <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
+                  <h2><%= match.location %></h2>
+                  <div class="desc mx-5">
+                    <p>Max. Participants: <%= match.max_attendent %><br>
+                      Current Number of Participants: <%= match.attendances.count %></p>
+                    <p>Participants:</p>
+                    <ul>
+                      <% if match.attendances.any? %>
+                        <% match.attendances.each do |attendance| %>
+                          <li><%= attendance.user.nickname %> is <%= attendance.status %></li>
+                        <% end %>
+                      <% else %>
+                        <li>Sorry, no one has signed up yet!</li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-      <!-- Previously Hosted Matches -->
       <h1 class="dashboard-title">Matches <%= @user.nickname %> hosted previously:</h1>
       <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-        <%= render "shared/hosted-matches" %>
+        <% @user.matches.sort_by{ |match| match.date }.each do |match| %>
+          <div class="col-12 col-md-6">
+            <% if match.date < Date.today %>
+              <div class="show-card-background-owner-done mt-3 mx-5">
+                <div class="product-owner">
+                  <p><%= match.sport %></p>
+                  <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
+                  <h2><%= match.location %></h2>
+                  <div class="desc mx-5">
+                    <p>Max. Participants: <%= match.max_attendent %><br>
+                      Current Number of Participants: <%= match.attendances.count %></p>
+                    <p>Participants:</p>
+                    <ul>
+                      <% match.attendances.each do |attendance| %>
+                        <li><%= attendance.user.nickname %> is <%= attendance.status %></li>
+                      </ul>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -66,5 +154,3 @@
     </div>
   </div>
 </div>
-
-
