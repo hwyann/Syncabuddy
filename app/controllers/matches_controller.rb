@@ -18,4 +18,28 @@ class MatchesController < ApplicationController
 
     @marker = [{ lat: @match.latitude, lng: @match.longitude }]
   end
+
+  def new
+    @match = Match.new()
+    @user = current_user
+    @match.user = @user
+    authorize @match
+  end
+
+  def create
+    @match = Match.new(matches_params)
+    authorize @match
+    @match.user = current_user
+    if @match.save
+      redirect_to matches_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def matches_params
+    params.require(:match).permit(:date, :description, :sport, :location)
+  end
 end
