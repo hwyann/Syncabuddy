@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :matches, through: :attendances
   has_many :matches
   has_many :attendances_as_owner, through: :matches, source: :attendances
+  has_one_attached :photo
+
 end
