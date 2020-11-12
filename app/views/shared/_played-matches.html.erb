@@ -1,0 +1,25 @@
+  <% @user.attendances.sort_by{|obj| obj.match.date}.each do |attendance| %>
+  <div class="col-12 col-md-6 col-lg-3 ml-4">
+    <% if attendance.match.date < Date.today %>
+      <div class="item-done">
+        <h2><%= attendance.match.sport %></h2>
+        <div class="dashboard-card">
+          <div class="dashboard-date">
+            <%= link_to match_path(attendance.match) do %>
+              <h2><%= attendance.match.date.strftime("%b %e,") %></h2>
+              <h2><%= attendance.match.date.strftime("l:%M %p") %></h2>
+            <% end %>
+          </div>
+          <div class="dashboard-location">
+            <p>Location: </p>
+            <p><%= attendance.match.location %></p>
+          </div>
+          <div class="dashboard-host">
+            <p>Hosted by: </p>
+            <p><%= attendance.match.user.nickname %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -40,6 +40,6 @@ class MatchesController < ApplicationController
   private
 
   def matches_params
-    params.require(:match).permit(:date, :description, :sport, :location)
+    params.require(:match).permit(:date, :description, :sport, :location, :photo)
   end
 end

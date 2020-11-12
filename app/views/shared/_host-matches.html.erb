@@ -1,0 +1,27 @@
+  <% @user.matches.sort_by{ |match| match.date }.each do |match| %>
+  <% if match.date >= Date.today %>
+    <div class="col-12 col-md-6">
+      <div class="show-card-background-owner mt-3 mx-5">
+        <div class="product-owner">
+          <p><%= match.sport %></p>
+          <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
+          <h2><%= match.location %></h2>
+          <div class="desc mx-5">
+            <p>Max. Participants: <%= match.max_attendent %><br>
+              Current Number of Participants: <%= match.attendances.count %></p>
+            <p>Participants:</p>
+            <ul>
+              <% if match.attendances.any? %>
+                <% match.attendances.each do |attendance| %>
+                  <li><%= attendance.user.nickname %> is <%= attendance.status %></li>
+                <% end %>
+              <% else %>
+                <li>Sorry, no one has signed up yet!</li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
