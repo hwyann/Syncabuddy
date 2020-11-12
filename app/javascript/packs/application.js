@@ -27,6 +27,24 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { initMapbox } from '../plugins/init_mapbox';
+import { initSweetalert } from '../plugins/init_sweetalert';
+
+initSweetalert('#sweet-alert-demo', {
+  title: "Are you sure you can't make it?",
+  text: "This action cannot be reversed",
+  icon: "warning",
+  buttons: ['Cancel', 'Yes'],
+  dangerMode: true,
+  showClass: {
+    backdrop: 'swal-overlay'
+  }
+}, (value) => {
+  if (value) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  }
+}
+);
 
 // import { initSelect2 } from '../components/init_select2';
 
