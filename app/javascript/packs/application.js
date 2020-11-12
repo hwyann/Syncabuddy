@@ -29,7 +29,16 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initSweetalert } from '../plugins/init_sweetalert';
 
-initSweetalert('#sweet-alert-demo', {
+
+
+
+// import { initSelect2 } from '../components/init_select2';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+  initMapbox();
+  initSweetalert('#sweet-alert-demo', {
   title: "Are you sure you can't make it?",
   text: "This action cannot be reversed",
   icon: "warning",
@@ -61,12 +70,4 @@ initSweetalert('#confirm', {
 }
 );
 
-
-
-// import { initSelect2 } from '../components/init_select2';
-
-document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
-  initMapbox();
 });
