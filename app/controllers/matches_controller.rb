@@ -4,6 +4,7 @@ class MatchesController < ApplicationController
   def index
     if params[:query].present?
       @matches = policy_scope(Match).search_by_sport_location_description(params[:query])
+      @query = params[:query]
     else
       @matches = policy_scope(Match)
     end
