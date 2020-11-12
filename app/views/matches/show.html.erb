@@ -12,7 +12,9 @@
         <%= @match.description %></p>
       <p class="desc">Max. Participants: <%= @match.max_attendent %><br>
         Current Participants: <%= @match.attendances.count %></p>
-      <% if @match.date < Date.today %>
+      <% if @match.user == current_user %>
+        <p>You are the host of this match</p>
+      <% elsif @match.date < Date.today %>
         <p>This match has aleady been played</p>
       <% elsif @match.attendances.any? { |attendance| attendance.user == current_user } %>
         <p>You have already signed up to this match</p>
