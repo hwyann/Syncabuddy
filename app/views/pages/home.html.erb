@@ -1,14 +1,18 @@
 <div class="banner" style="background-image: linear-gradient(to bottom right, rgba(37,37,37,1), rgba(37,37,37,0.9));">
   <div class="container">
     <h1>#wanna play?</h1>
-    <form class="form-inline">
+    <%= form_with url: matches_path, method: :get, local:true, class: 'form-inline' do %>
       <div class="form-group mr-2">
-        <input type="text" class="form-control" id="inputPassword2" placeholder="e.g. Tokyo">
-      </div>
-      <%= link_to matches_path do %>
-        <button class="btn btn-warning">Find a match near you</button>
-      <% end %>
-    </form>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "e.g. Tokyo"
+        %>
+        </div>
+        <div class="form-group mr-2">
+        <%= submit_tag "Find a match near you", class: "btn btn-warning" %>
+        </div>
+    <% end %>
   </div>
 </div>
 <div class="index-container">

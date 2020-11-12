@@ -25,7 +25,7 @@ class MatchesController < ApplicationController
   end
 
   def new
-    @match = Match.new()
+    @match = Match.new
     @user = current_user
     @match.user = @user
     authorize @match
