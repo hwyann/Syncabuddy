@@ -1,0 +1,182 @@
+.form-box {
+  position: absolute;
+  top: 480px;
+  left: 600px;
+  width: 500px;
+  padding: 60px;
+  margin: 40px;
+  transform: translate(-50%, -50%);
+  background: $background-color;
+  // box-sizing: border-box;
+  // box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 5px 5px 15px rgba($orange, .5);
+  border-radius: 10px;
+}
+
+.form-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  text-align: center;
+  color:#313131;
+  font-size:45px;
+  -webkit-animation:colorchange 20s infinite alternate;
+  letter-spacing: 4px
+}
+
+@-webkit-keyframes colorchange {
+  0% {
+
+    color: #03e9f4;
+  }
+
+  10% {
+
+    color: #8e44ad;
+  }
+
+  20% {
+
+    color: $orange;
+  }
+
+  30% {
+
+    color: #d35400;
+  }
+
+  40% {
+
+    color: #03e9f4;
+  }
+
+  50% {
+
+    color: $orange;
+  }
+
+  60% {
+
+    color: #8e44ad;
+  }
+
+  70% {
+
+    color: #03e9f4;
+  }
+  80% {
+
+    color: #f1c40f;
+  }
+
+  90% {
+
+    color: $orange;
+  }
+
+  100% {
+
+    color: $red;
+  }
+}
+
+.form-box label {
+  color: $orange;
+}
+.form-box .submit-btn {
+  padding: 10px 20px;
+  color: $orange;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.form-box .submit-btn:hover {
+  background: $orange;
+  color: $white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px $orange,
+              0 0 25px $orange,
+              0 0 50px $orange,
+              0 0 100px $orange;
+}
+
+.form-box .submit-btn {
+  margin: 4px;
+}
+
+.form-box .submit-btn:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.form-box .submit-btn:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.form-box .submit-btn:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.form-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
