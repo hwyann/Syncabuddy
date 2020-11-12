@@ -26,7 +26,9 @@
   <!-- Content for Host Tab -->
   <div class="tab-pane fade" id="host" role="tabpanel" aria-labelledby="host-tab">
     <div class="create-event">
+
       <%= link_to 'Post a new match', new_match_path, class: 'btn btn-warning btn-block'%>
+
     </div>
     <!-- Hosted matches in future -->
     <h1 class="dashboard-title">Matches <%= @user.nickname %> is hosting:</h1>
