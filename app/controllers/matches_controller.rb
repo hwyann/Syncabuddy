@@ -2,7 +2,13 @@ class MatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @matches = policy_scope(Match)
+    if params[:query].present?
+      @matches = policy_scope(Match).search_by_sport_location_description(params[:query])
+      @query = params[:query]
+    else
+      @matches = policy_scope(Match)
+    end
+
     @markers = @matches.geocoded.map do |match|
       {
         lat: match.latitude,
@@ -20,7 +26,7 @@ class MatchesController < ApplicationController
   end
 
   def new
-    @match = Match.new()
+    @match = Match.new
     @user = current_user
     @match.user = @user
     authorize @match

@@ -29,6 +29,16 @@ class AttendancesController < ApplicationController
     redirect_to user_path(@attendance.user), notice: 'Restaurant was successfully destroyed.'
   end
 
+  def update
+    @attendance.status = 'confirmed'
+    if @attendance.save
+      redirect_to user_path(current_user)
+    else
+      raise
+      render "matches/#{@match.id}"
+    end
+  end
+
   private
 
   def set_attendance

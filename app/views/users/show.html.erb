@@ -63,11 +63,18 @@
         </div>
       </div>
     </div>
-    <div class="tab-pane fade" id="host" role="tabpanel" aria-labelledby="host-tab">
-      <div class="create-event">
-        <%= link_to 'Post a new match', new_match_path, class: 'btn btn-light'%>
-      </div>
-      <h1 class="dashboard-title">Matches <%= @user.nickname %> is hosting:</h1>
+  </div>
+</div>
+  <!-- Content for Host Tab -->
+  <div class="tab-pane fade" id="host" role="tabpanel" aria-labelledby="host-tab">
+    <div class="create-event">
+
+      <%= link_to 'Post a new match', new_match_path, class: 'btn btn-warning btn-block'%>
+
+    </div>
+    <!-- Hosted matches in future -->
+    <h1 class="dashboard-title">Matches <%= @user.nickname %> is hosting:</h1>
+    <div class="container-fluid">
       <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
         <% @user.matches.sort_by{ |match| match.date }.each do |match| %>
           <% if match.date >= Date.today %>
@@ -124,3 +131,26 @@
         <% end %>
       </div>
     </div>
+  </div>
+</div> -->
+<br>
+<h1 class="dashboard-title">Match hosted</h1>
+<div class="container-fluid">
+  <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+    <div class="col-12 col-md-6 col-lg-3 ml-4">
+      <% current_user.matches.sort_by{|obj| obj.date}.each do |match| %>
+      <div class="item-done">
+        <h2><%= match.sport %></h2>
+        <h2 style="color: #EDECEC;"><%= match.date.strftime("%b %e,%l:%M %p")  %></h2>
+        <p>Location: <%= match.location %></p>
+        <p>Hosted by: <%= match.user.nickname  %></p>
+        <h3>Attendances:</h3>
+        <% match.attendances.each do |attendance| %>
+          <p><%= attendance.user.nickname %></p>
+          <%= link_to 'accept', attendance_path(attendance), method: :patch %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
