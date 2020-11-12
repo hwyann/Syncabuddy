@@ -12,4 +12,8 @@ class AttendancePolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def update?
+    true
+  end
 end

@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: :destroy
+  before_action :set_attendance, only: [:destroy, :update]
 
   def create
     @attendance = Attendance.new
@@ -18,6 +18,16 @@ class AttendancesController < ApplicationController
   def destroy
     @attendance.destroy
     redirect_to user_path(@attendance.user), notice: 'Restaurant was successfully destroyed.'
+  end
+
+  def update
+    @attendance.status = 'confirmed'
+    if @attendance.save
+      redirect_to user_path(current_user)
+    else
+      raise
+      render "matches/#{@match.id}"
+    end
   end
 
   private
