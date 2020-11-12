@@ -86,7 +86,27 @@
                   <ul>
                     <% if match.attendances.any? %>
                       <% match.attendances.each do |attendance| %>
-                        <li><%= attendance.user.nickname %> is <%= attendance.status %></li>
+                        <li>
+                          <div class="participants">
+                            <p><%= attendance.user.nickname %> is <%= attendance.status %></p>
+                            <% if attendance.status == 'pending' %>
+                              ...
+
+                              <% if false %>
+                                <%= link_to attendance_path(attendance), method: :patch do %>
+                                  <i class="fas fa-hourglass"></i>
+                                <% end %>
+                              <% end %>
+
+                                <button id="confirm" class="pending-btn">
+                                  <i class="fas fa-hourglass"></i></button>
+                                  <%= link_to "", attendance_path(attendance), method: :patch, id: "confirm-link", class: "hidden" %>
+                            <% end %>
+                            <% if attendance.status == 'confirmed' %>
+                                <i class="fas fa-check"></i>
+                            <% end %>
+                            </div>
+                        </li>
                       <% end %>
                     <% else %>
                       <li>Sorry, no one has signed up yet!</li>

@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: :destroy
+  before_action :set_attendance, only: [:destroy, :update]
 
   def create
     @attendance = Attendance.new
@@ -8,6 +8,15 @@ class AttendancesController < ApplicationController
     @attendance.user = @user
     @attendance.match = @match
     authorize @attendance
+    if @attendance.save
+      redirect_to user_path(current_user)
+    else
+      render "matches/#{@match.id}"
+    end
+  end
+
+  def update
+    @attendance.status = 'confirmed'
     if @attendance.save
       redirect_to user_path(current_user)
     else
