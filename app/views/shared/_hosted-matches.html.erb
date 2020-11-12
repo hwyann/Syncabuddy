@@ -1,47 +1,31 @@
 <% @user.matches.sort_by{ |match| match.date }.each do |match| %>
-        <% if match.date >= Date.today %>
-          <div class="col-12 col-md-6">
-            <div class="show-card-background-owner mt-3 mx-5">
-              <div class="product-owner">
-                <p><%= match.sport %></p>
-                <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
-                <h2><%= match.location %></h2>
-                <div class="desc mx-5">
-                  <p>Max. Participants: <%= match.max_attendent %><br>
-                    Current Number of Participants: <%= match.attendances.count %></p>
-                  <p>Participants:</p>
-                  <ul>
-                    <% if match.attendances.any? %>
-                      <% match.attendances.each do |attendance| %>
-                        <li>
-                          <div class="participants">
-                            <p><%= attendance.user.nickname %> is <%= attendance.status %></p>
-                            <% if attendance.status == 'pending' %>
-                              ...
-
-                              <% if false %>
-                                <%= link_to attendance_path(attendance), method: :patch do %>
-                                  <i class="fas fa-hourglass"></i>
-                                <% end %>
-                              <% end %>
-
-                                <button id="confirm" class="pending-btn">
-                                  <i class="fas fa-hourglass"></i></button>
-                                  <%= link_to "", attendance_path(attendance), method: :patch, id: "confirm-link", class: "hidden" %>
-                            <% end %>
-                            <% if attendance.status == 'confirmed' %>
-                                <i class="fas fa-check"></i>
-                            <% end %>
-                            </div>
-                        </li>
-                      <% end %>
-                    <% else %>
-                      <li>Sorry, no one has signed up yet!</li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-            </div>
+  <% if match.date < Date.today %>
+    <div class="col-12 col-md-6">
+      <div class="show-card-background-owner-done mt-3 mx-5">
+        <div class="product-owner">
+          <p><%= match.sport %></p>
+          <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
+          <h2><%= match.location %></h2>
+          <div class="desc mx-5">
+            <p>Max. Participants: <%= match.max_attendent %><br>
+              Number of Participants: <%= match.attendances.count %></p>
+            <p>Participants:</p>
+            <ul>
+              <% if match.attendances.any? %>
+                <% match.attendances.each do |attendance| %>
+                  <li>
+                    <div class="participants">
+                      <p><%= attendance.user.nickname %></p>
+                    </div>
+                  </li>
+                <% end %>
+              <% else %>
+                <li>No one came</li>
+              <% end %>
+            </ul>
           </div>
-        <% end %>
-      <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
