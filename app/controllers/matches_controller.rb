@@ -12,7 +12,8 @@ class MatchesController < ApplicationController
     @markers = @matches.geocoded.map do |match|
       {
         lat: match.latitude,
-        lng: match.longitude
+        lng: match.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { match: match })
       }
     end
   end

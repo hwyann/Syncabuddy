@@ -7,7 +7,7 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const initMapbox = () => {
-  const mapElement = document.getElementById('map');
+const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -17,17 +17,35 @@ const initMapbox = () => {
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-    const element = document.createElement('i');
-    element.className = 'fas fa-map-marker-alt';
-    element.style.color = 'white';
-      element.style.width = '25px';
-  element.style.height = '25px';
+    if (markers.length > 1) {
+      markers.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
-    new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-    });
+      const element = document.createElement('i');
+      element.className = 'fas fa-map-marker-alt';
+      element.style.color = 'white';
+      element.style.width = '30px';
+      element.style.height = '30px';
+
+      new mapboxgl.Marker(element)
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(map);
+      });
+    } else {
+      markers.forEach((marker) => {
+
+      const element = document.createElement('i');
+      element.className = 'fas fa-map-marker-alt';
+      element.style.color = 'white';
+      element.style.width = '30px';
+      element.style.height = '30px';
+
+      new mapboxgl.Marker(element)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+      });
+    }
 
     fitMapToMarkers(map, markers);
   }
