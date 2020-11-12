@@ -41,24 +41,13 @@ puts "...created #{User.count} users!"
 
 puts "creating matches..."
 
-SPORTS = %W[Tennis Football Snowboard Hiking Golf Basketball Darts Bowling Beach\ Volleyball]
-LOCATION = %W[Meguro Shibuya Gotanda Ebisu Yoyogi Shinjuku Toyosu Harumi Machida]
-DESCRIPTION = [
-  'Hello guys, this is Tomo.
-  Let’s enjoy practicing and playing together.
-  Your level does not matter.',
-  'Hi we are looking for more people to join us. Lets have a fun game and shake out those rusty legs.',
-  'Check out this event and see if you are interested. Let’s enjoy practicing and playing together.
-    Your level does not matter.'
-]
-
 15.times do
   Match.create!(
     user_id: rand(User.first.id..User.last.id),
     date: DateTime.new(2020, rand(11..12), rand(1..28), rand(10..20), 0, 0),
-    description: DESCRIPTION.sample,
-    location: LOCATION.sample,
-    sport: SPORTS.sample,
+    description: Match::DESCRIPTION.sample,
+    location: Match::LOCATION.sample,
+    sport: Match::SPORTS.sample,
     min_attendent: rand(1..2),
     max_attendent: rand(3..10)
   )

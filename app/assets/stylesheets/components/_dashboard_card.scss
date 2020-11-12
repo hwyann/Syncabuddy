@@ -20,6 +20,33 @@ ul {
   padding: 0;
 }
 
+.participants {
+  display: flex;
+  align-items: center;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+.pending-btn {
+  background-color: $background-color;
+  border: none;
+  color: rgba(255, 198, 90,0.2);
+  transition: 0.2s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: rgba(255, 198, 90,0.8);
+  }
+}
+
+
 .dashboard-title {
     color: #EDECEC;
     margin-top: 24px;
@@ -86,6 +113,10 @@ ul {
   &:hover {
     color: rgba(255, 198, 90,0.8);
   }
+}
+
+.fa-check {
+  color: rgba(0, 255, 0, 0.6);
 }
 
 .item {
