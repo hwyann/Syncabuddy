@@ -26,6 +26,7 @@ const mapElement = document.getElementById('map');
       element.style.color = 'white';
       element.style.width = '30px';
       element.style.height = '30px';
+      element.style.fontSize = '24px';
 
       new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
@@ -40,6 +41,7 @@ const mapElement = document.getElementById('map');
       element.style.color = 'white';
       element.style.width = '30px';
       element.style.height = '30px';
+      element.style.fontSize = '24px';
 
       new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
