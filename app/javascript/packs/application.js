@@ -35,6 +35,9 @@ initSweetalert('#sweet-alert-demo', {
   icon: "warning",
   buttons: ['Cancel', 'Yes'],
   dangerMode: true,
+  showClass: {
+    backdrop: 'swal-overlay'
+  }
 }, (value) => {
   if (value) {
     const link = document.querySelector('#delete-link');

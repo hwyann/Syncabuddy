@@ -31,8 +31,8 @@
             <p><%= attendance.match.user.nickname %></p>
           </div>
           <% if policy(attendance).destroy? %>
-          <button id="sweet-alert-demo" class="dashboard-btn-caution"><i
-              class="fas fa-exclamation-triangle"></i></button>
+          <button id="sweet-alert-demo" class="dashboard-btn-caution">
+          <i class="fas fa-ellipsis-v"></i></button>
           <%= link_to "", attendance_path(attendance), method: :delete, id: "delete-link", class: "hidden" %>
           <% end %>
         </div>
