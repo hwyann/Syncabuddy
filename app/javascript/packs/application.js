@@ -46,6 +46,21 @@ initSweetalert('#sweet-alert-demo', {
 }
 );
 
+initSweetalert('#confirm', {
+  title: "Do you want to confirm?",
+  icon: "info",
+  buttons: ['Cancel', 'Yes'],
+  showClass: {
+    backdrop: 'swal-overlay'
+  }
+}, (value) => {
+  if (value) {
+    const link = document.querySelector('#confirm-link');
+    link.click();
+  }
+}
+);
+
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {

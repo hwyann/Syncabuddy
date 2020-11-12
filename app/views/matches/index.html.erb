@@ -6,8 +6,12 @@
         <div class="card-match-wrap">
           <%= link_to match_path(match), class: "card-match" do %>
             <div class="card-background-black">
-              <% url = "https://loremflickr.com/320/240/#{match.sport},ball/all?random=#{rand(1..500)}" %>
-              <img src=<%= url %> />
+              <% if match.photo.attached? %>
+                <%= cl_image_tag match.photo.key %>
+              <% else %>
+                <% url = "https://loremflickr.com/320/240/#{match.sport},ball/all?random=#{rand(1..500)}" %>
+                <img src=<%= url %> />
+              <% end %>
               <div class="card-match-infos">
                 <h2><%= match.sport %></h2>
                 <p><%= match.date.strftime("%b %e, %l:%M %p") %></p>

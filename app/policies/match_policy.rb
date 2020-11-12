@@ -1,7 +1,7 @@
 class MatchPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      Match.all
+      scope.all
     end
   end
 
