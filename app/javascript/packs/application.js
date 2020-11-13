@@ -28,6 +28,7 @@ import "bootstrap";
 // Internal imports, e.g:
 import { initMapbox } from '../plugins/init_mapbox';
 import { initSweetalert } from '../plugins/init_sweetalert';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 
 
 
@@ -37,6 +38,7 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initAutocomplete();
   initMapbox();
   initSweetalert('#sweet-alert-demo', {
   title: "Are you sure you can't make it?",
