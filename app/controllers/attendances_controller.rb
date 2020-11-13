@@ -26,7 +26,7 @@ class AttendancesController < ApplicationController
 
   def destroy
     @attendance.destroy
-    redirect_to user_path(@attendance.user), notice: 'Restaurant was successfully destroyed.'
+    redirect_to user_path(@attendance.user)
   end
 
   def update

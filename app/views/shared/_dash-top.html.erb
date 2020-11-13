@@ -1,0 +1,82 @@
+<div class="dash-top">
+  <!-- this is the left box -->
+  <div class="action-box show-card-background-owner mt-3 mx-5">
+    <h2>ACTIONS</h2>
+    <div class="action-list">
+      <ul>
+        <% @user.matches.each do |match| %>
+            <% match.attendances.each do |attendance| %>
+            <% if attendance.status == 'pending' %>
+              <li>
+                <div class="action-user">
+                  <p>
+                  <%= attendance.user.nickname %> is <span class="pending"> <%= attendance.status %></span> for <%= attendance.match.sport %> on <%= attendance.match.date.strftime("%B %d") %>
+                  </p>
+                   <button id="confirm" class="pending-btn">
+                      <i class="fas fa-ellipsis-h"></i></button>
+                    <%= link_to "", attendance_path(attendance), method: :patch, id: "confirm-link", class: "hidden" %>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <!-- this is the right box -->
+  <div class="action-box show-card-background-owner mt-3 mx-5">
+    <h2>NEXT</h2>
+    <div class="next-box">
+      <% owner = @user.matches %>
+      <% participant = @user.attendances.map(&:match) %>
+      <% total = owner + participant %>
+      <% first = total.sort_by(&:date).first %>
+      <div class="next-list">
+
+      <!-- if user is hosting -->
+
+      <% if first.user == current_user %>
+        <!-- this is the card diplayed -->
+        <div class="description">
+          <%= link_to match_path(first) do %>
+              <div class="hosting">
+              <p class="next-card-title">You are hosting:  <span class="hosting-sport"> <%= first.sport %></span></p>
+
+              <p>Date: <%= first.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Location: <%= first.location %></p>
+              <p>Participants:</p>
+              <ul>
+                  <% first.attendances.each do |attendance| %>
+                    <li><%= attendance.user.nickname %></li>
+                    <% end %>
+              </ul>
+              </div>
+          <% end %>
+            </div>
+    <!-- if user is joining -->
+      <% else %>
+           <div class="description">
+          <%= link_to match_path(first) do %>
+            <div class="hosting">
+              <p class="next-card-title">You are joining:</p>
+                <h3><%= first.sport %></h3>
+                </div>
+              </div>
+              <p>Date: <%= first.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Location: <%= first.location %></p>
+              <p>Participants:</p>
+              <ul>
+                  <% first.attendances.each do |attendance| %>
+                    <li><%= attendance.user.nickname %></li>
+                    <% end %>
+              </ul>
+          <% end %>
+            </div>
+
+
+      <% end %>
+
+      </div>
+
+    </div>
+  </div>

@@ -31,6 +31,11 @@ ul {
 
 }
 
+.pending {
+  color: $white;
+}
+
+
 .pending-btn {
   background-color: $background-color;
   border: none;
@@ -60,6 +65,8 @@ ul {
   align-items: center;
 }
 
+
+
 .dashboard-date, .dashboard-location , .dashboard-host{
   display: flex;
   flex-direction: column;
@@ -73,6 +80,8 @@ ul {
     margin: 0;
   }
 }
+
+
 
 .dashboard-tag {
   position: absolute;
@@ -118,6 +127,12 @@ ul {
 .fa-check {
   color: rgba(0, 255, 0, 0.6);
 }
+
+.item-card {
+
+}
+
+
 
 .item {
   position: relative;
@@ -216,6 +231,92 @@ ul {
     -moz-transition: margin 0.2s ease-out;
     -o-transition: margin 0.2s ease-out;
 }
+
+.dash-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.hosting {
+  align-items: flex-end;
+  color: $white;
+  p {
+    color: $orange;
+  }
+
+  h3 {
+    padding-left: 4px;
+    margin: 0;
+  }
+}
+
+.action-box {
+  padding: 24px;
+  height: 260px;
+
+  h2 {
+    color: $white;
+  }
+
+  i {
+    margin-left: 16px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.action-list {
+}
+
+.action-user {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.next-card {
+  justify-content: space-around;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.next-card-title {
+  font-size: 4em;
+  color: $white !important;
+  margin-bottom: 8px;
+}
+
+.next-card-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.next-location {
+  display: flex;
+  color: $white;
+}
+
+.next-participants {
+  display: flex;
+  color: $white;
+}
+
+.dashboard-date {
+  color: $red;
+}
+
+
 @media (min-width: 100px) and (max-width: 575px) {
 
 }
