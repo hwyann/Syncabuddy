@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 
 const fitMapToMarkers = (map, markers) => {
+  console.log(markers);
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
   map.fitBounds(bounds, { padding: 30, maxZoom: 10, duration: 1000 });
@@ -50,6 +51,7 @@ const mapElement = document.getElementById('map');
     }
 
     fitMapToMarkers(map, markers);
+    console.log("fit map to marker");
   }
 };
 
