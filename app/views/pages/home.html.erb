@@ -1,7 +1,7 @@
 <div class="container">
   <div class="banner" style="background-image: linear-gradient(to bottom right, rgba(37,37,37,1), rgba(37,37,37,0.9));">
     <div class="container">
-      <h1>#wanna play?</h1>
+      <%= render "shared/logo" %>
       <%= form_with url: matches_path, method: :get, local:true, class: 'form-inline' do %>
         <div class="form-group mr-2">
           <%= text_field_tag :query,
@@ -33,7 +33,7 @@
                 <p><%= match.sport %><br>
                   Hosted by: <%= match.user.nickname %></p>
                 <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
-                <h2><%= match.location %></h2>
+                <h2><%= match.city %></h2>
               </div>
             </div>
           <% end %>

@@ -7,11 +7,17 @@
     <div class="product">
       <p><%= @match.sport %></p>
       <h1><%= @match.date.strftime("%b %e, %l:%M %p") %></h1>
-      <h2><%= @match.location %></h2>
+      <h2><%= @match.city %></h2>
+      <p class="desc">Address: <%= @match.location %></p>
       <p class="desc">Hosted by: <%= @match.user.nickname %><br>
         <%= @match.description %></p>
       <p class="desc">Max. Participants: <%= @match.max_attendent %><br>
         Current Participants: <%= @match.attendances.count %></p>
+      <% if @match.attendances.any? %>
+        <div class="avatar-container">
+          <%= render 'shared/avatar-list' %>
+        </div>
+      <% end %>
       <% if @match.user == current_user %>
         <p>You are the host of this match</p>
       <% elsif @match.date < Date.today %>

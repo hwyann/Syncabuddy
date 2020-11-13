@@ -46,10 +46,11 @@ puts "creating matches..."
     user_id: rand(User.first.id..User.last.id),
     date: DateTime.new(2020, rand(11..12), rand(1..28), rand(10..20), 0, 0),
     description: Match::DESCRIPTION.sample,
-    location: Match::LOCATION.sample,
+    city: Match::CITY.sample,
     sport: Match::SPORTS.sample,
     min_attendent: rand(1..2),
-    max_attendent: rand(3..10)
+    max_attendent: rand(3..10),
+    location: Match::LOCATION.sample
   )
 end
 

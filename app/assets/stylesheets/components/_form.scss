@@ -19,7 +19,7 @@
   text-align: center;
   color:#313131;
   font-size:45px;
-  -webkit-animation:colorchange 20s infinite alternate;
+  -webkit-animation:colorchange 30s infinite alternate;
   letter-spacing: 4px
 }
 
@@ -41,7 +41,7 @@
 
   30% {
 
-    color: #d35400;
+    color: $red;
   }
 
   40% {
