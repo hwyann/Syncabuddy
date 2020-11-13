@@ -12,6 +12,12 @@
         <%= @match.description %></p>
       <p class="desc">Max. Participants: <%= @match.max_attendent %><br>
         Current Participants: <%= @match.attendances.count %></p>
+        <% if @match.attendances.any? %>
+        <div class="avatar-container">
+          <%= render 'shared/avatar-list' %>
+        </div>
+      <% end %>
+      <% if @match.date < Date.today %>
       <% if @match.user == current_user %>
         <p>You are the host of this match</p>
       <% elsif @match.date < Date.today %>
@@ -24,6 +30,7 @@
         <%= simple_form_for [@match, @attendance] do |f| %>
           <%= f.submit "Join", class: "add join-button" %>
         <% end %>
+      <% end %>
       <% end %>
     </div>
   </div>
