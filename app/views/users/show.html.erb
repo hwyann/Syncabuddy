@@ -9,11 +9,11 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="play" role="tabpanel" aria-labelledby="play-tab">
     <%= render 'shared/dash-top' %>
-  </div>
-  <h2 class="dashboard-title">Upcoming for <%= @user.nickname %> :</h2>
-  <div class="container-fluid">
-    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-      <%= render "shared/current-matches" %>
+    <h2 class="dashboard-title">Upcoming for <%= @user.nickname %> :</h2>
+    <div class="container-fluid">
+      <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+        <%= render "shared/current-matches" %>
+      </div>
     </div>
     <h1 class="dashboard-title">Matches played:</h1>
     <div class="container-fluid">
@@ -22,26 +22,24 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-- Content for Host Tab -->
-<div class="tab-pane fade mt-4 pb-4" id="host" role="tabpanel" aria-labelledby="host-tab">
-  <!-- Hosted a new match -->
-  <div class="create-event col-12 col-md-6">
-    <%= link_to new_match_path, class: 'btn btn-warning' do %>
-      <h3><i class="fas fa-plus-square"></i>  Host a new match</h3>
-    <% end %>
-  </div>
-  <!-- Hosted matches in future -->
-  <h1 class="dashboard-title">Matches <%= @user.nickname %> is hosting:</h1>
-  <div class="container-fluid">
-    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-      <%= render "shared/host-matches" %>
+  <!-- Content for Host Tab -->
+  <div class="tab-pane fade mt-4 pb-4" id="host" role="tabpanel" aria-labelledby="host-tab">
+    <!-- Hosted a new match -->
+    <div class="create-event col-12 col-md-6">
+      <%= link_to new_match_path, class: 'btn btn-warning' do %>
+        <h3><i class="fas fa-plus-square"></i>  Host a new match</h3>
+      <% end %>
     </div>
-    <h1 class="dashboard-title">Matches <%= @user.nickname %> hosted previously:</h1>
-    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
-      <%= render "shared/hosted-matches" %>
+    <!-- Hosted matches in future -->
+    <h1 class="dashboard-title">Matches <%= @user.nickname %> is hosting:</h1>
+    <div class="container-fluid">
+      <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+        <%= render "shared/host-matches" %>
+      </div>
+      <h1 class="dashboard-title">Matches <%= @user.nickname %> hosted previously:</h1>
+      <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+        <%= render "shared/hosted-matches" %>
+      </div>
     </div>
   </div>
-</div>
 </div>
