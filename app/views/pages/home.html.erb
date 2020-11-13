@@ -1,7 +1,7 @@
 <div class="container">
   <div class="banner" style="background-image: linear-gradient(to bottom right, rgba(37,37,37,1), rgba(37,37,37,0.9));">
     <div class="container">
-      <h1>#wanna play?</h1>
+      <%= render "shared/logo" %>
       <%= form_with url: matches_path, method: :get, local:true, class: 'form-inline' do %>
         <div class="form-group mr-2">
           <%= text_field_tag :query,
