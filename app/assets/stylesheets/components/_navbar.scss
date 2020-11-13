@@ -1,52 +1,31 @@
 .navbar-syncabuddy {
+  color: $white;
   justify-content: space-between;
-  background: #252525;
-  color: $white;
-  align-items: center;
-}
-
-.navbar-brand {
-  color: $white;
-  font-family: 'Anton', sans-serif;
+  letter-spacing: 3px;
+  opacity: 0.7;
 }
 
 .navbar-syncabuddy .navbar-collapse {
   flex-grow: 0;
 }
-.nav-link {
-  font-family: 'Anton', sans-serif;
-  color: $white;
+
+.dropdown-divider {
+  color: $background-color;
 }
 
-.nav-browse {
-  letter-spacing: 2px;
-}
 
-.dropdown-menu {
+.avatar .dropdown-toggle {
   background-color: $background-color;
   // background: linear-gradient(to right, $red, purple);
   border: 1px $white solid
 }
 
 .dropdown-item {
-  color: $white;
+  color: $background-color;
   font-family: $body-font;
 
   &:hover {
-    background-color: $white;
+    background-color: lightgrey;
     color: $orange;
   }
-}
-
-.navbar-lewagon {
-  justify-content: space-between;
-  background: $white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }
