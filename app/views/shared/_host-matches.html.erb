@@ -5,8 +5,9 @@
         <div class="product-owner">
           <p><%= match.sport %></p>
           <h1><%= match.date.strftime("%b %e, %l:%M %p") %></h1>
-          <h2><%= match.location %></h2>
+          <h2><%= match.city %></h2>
           <div class="desc mx-5">
+            <p>Address: <%= match.location %></p>
             <p>Max. Participants: <%= match.max_attendent %><br>
               Current Number of Participants: <%= match.attendances.count %></p>
             <p>Participants:</p>
