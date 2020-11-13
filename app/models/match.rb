@@ -6,8 +6,8 @@ class Match < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
 
   include PgSearch::Model
-  pg_search_scope :search_by_sport_location_description,
-    against: [:sport, :location, :description],
+  pg_search_scope :search_by_sport_city_description,
+    against: [:sport, :city, :description],
   using: {
     tsearch: { prefix: true } # <-- now `superman batm` will return something!
   }
