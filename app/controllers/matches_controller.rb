@@ -38,7 +38,7 @@ class MatchesController < ApplicationController
     authorize @match
     @match.user = current_user
     if @match.save
-      redirect_to matches_path
+      redirect_to user_path(current_user)
     else
       render :new
     end
