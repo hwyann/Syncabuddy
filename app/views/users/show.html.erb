@@ -23,11 +23,14 @@
     </div>
   </div>
 </div>
-<!-- comment -->
+
 <!-- Content for Host Tab -->
-<div class="tab-pane fade" id="host" role="tabpanel" aria-labelledby="host-tab">
-  <div class="create-event">
-    <%= link_to 'Post a new match', new_match_path, class: 'btn btn-warning btn-block'%>
+<div class="tab-pane fade mt-4 pb-4" id="host" role="tabpanel" aria-labelledby="host-tab">
+  <!-- Hosted a new match -->
+  <div class="create-event col-12 col-md-6">
+    <%= link_to new_match_path, class: 'btn btn-warning' do %>
+      <h3><i class="fas fa-plus-square"></i>  Host a new match</h3>
+    <% end %>
   </div>
   <!-- Hosted matches in future -->
   <h1 class="dashboard-title">Matches <%= @user.nickname %> is hosting:</h1>
