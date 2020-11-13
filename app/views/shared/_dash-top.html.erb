@@ -37,84 +37,41 @@
 
       <% if first.user == current_user %>
         <!-- this is the card diplayed -->
-        <p class="next-card-title">You are hosting:</p>
+        <div class="description">
+          <%= link_to match_path(first) do %>
+              <div class="hosting">
+              <p class="next-card-title">You are hosting:  <span class="hosting-sport"> <%= first.sport %></span></p>
 
-        <div class="item next-card">
-          <h2><%= first.sport %></h2>
-            <div class="next-card-info">
-              <div class="dashboard-date">
-                  <%= link_to match_path(first) do %>
-                    <h2><%= first.date.strftime("%b %e,") %></h2>
-                    <h2><%= first.date.strftime("l:%M %p") %></h2>
-                  <% end %>
-              </div>
-
+              <p>Date: <%= first.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Location: <%= first.location %></p>
+              <p>Participants:</p>
               <ul>
-                <li>
-                  <div class="next-location">
-                    <p>Location: </p>
-                    <p><%= first.location %> </p>
-                  </div>
-                </li>
-                <li>
-                <div class="next-participants">
-                    <p>Participants: </p>
                   <% first.attendances.each do |attendance| %>
-                    <p><%= attendance.user.nickname %></p>
-                  <% end %>
-              </div>
-                </li>
+                    <li><%= attendance.user.nickname %></li>
+                    <% end %>
               </ul>
-
-                <% if policy(first).destroy? %>
-                  <button id="sweet-alert-demo" class="dashboard-btn-caution">
-                    <i class="fas fa-ellipsis-v"></i></button>
-                  <%= link_to "", attendance_path(first.attendance), method: :delete, id: "delete-link", class: "hidden" %>
-                <% end %>
-                </div>
+              </div>
+          <% end %>
             </div>
-          </div>
-
-
-
     <!-- if user is joining -->
       <% else %>
-      <p class="next-card-title">You are joining:</p>
-      <div class="item next-card">
-          <h2><%= first.sport %></h2>
-            <div class="next-card-info">
-              <div class="dashboard-date">
-                  <%= link_to match_path(first) do %>
-                    <h2><%= first.date.strftime("%b %e,") %></h2>
-                    <h2><%= first.date.strftime("l:%M %p") %></h2>
-                  <% end %>
-              </div>
-
-              <ul>
-                <li>
-                  <div class="next-location">
-                    <p>Location: </p>
-                    <p><%= first.location %> </p>
-                  </div>
-                </li>
-                <li>
-                <div class="next-participants">
-                    <p>Participants: </p>
-                  <% first.attendances.each do |attendance| %>
-                    <p><%= attendance.user.nickname %></p>
-                  <% end %>
-              </div>
-                </li>
-              </ul>
-
-                <% if policy(first).destroy? %>
-                  <button id="sweet-alert-demo" class="dashboard-btn-caution">
-                    <i class="fas fa-ellipsis-v"></i></button>
-                  <%= link_to "", attendance_path(first.attendance), method: :delete, id: "delete-link", class: "hidden" %>
-                <% end %>
+           <div class="description">
+          <%= link_to match_path(first) do %>
+            <div class="hosting">
+              <p class="next-card-title">You are joining:</p>
+                <h3><%= first.sport %></h3>
                 </div>
+              </div>
+              <p>Date: <%= first.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Location: <%= first.location %></p>
+              <p>Participants:</p>
+              <ul>
+                  <% first.attendances.each do |attendance| %>
+                    <li><%= attendance.user.nickname %></li>
+                    <% end %>
+              </ul>
+          <% end %>
             </div>
-          </div>
 
 
       <% end %>

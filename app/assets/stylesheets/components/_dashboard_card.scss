@@ -243,8 +243,20 @@ ul {
   }
 }
 
+.hosting {
+  align-items: flex-end;
+  color: $white;
+  p {
+    color: $orange;
+  }
+
+  h3 {
+    padding-left: 4px;
+    margin: 0;
+  }
+}
+
 .action-box {
-  z-index: -2;
   padding: 24px;
   height: 260px;
 
@@ -260,6 +272,9 @@ ul {
     margin: 0;
     padding: 0;
   }
+}
+
+.action-list {
 }
 
 .action-user {
