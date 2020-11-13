@@ -29,7 +29,7 @@
         <% if policy(attendance).destroy? %>
           <button id="sweet-alert-demo" class="dashboard-btn-caution">
             <i class="fas fa-ellipsis-v"></i></button>
-          <%= link_to "", attendance_path(attendance), method: :delete, id: "delete-link", class: "hidden" %>
+          <%= link_to "", attendance_path(attendance), method: :delete, id: "delete-link", class: "hidden", remote: true %>
         <% end %>
       </div>
     </div>
