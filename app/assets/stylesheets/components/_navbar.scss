@@ -13,11 +13,11 @@
   color: $background-color;
 }
 
-
 .avatar .dropdown-toggle {
   background-color: $background-color;
   // background: linear-gradient(to right, $red, purple);
-  border: 1px $white solid
+  border: 1px $white solid;
+  z-index: 1050;
 }
 
 .dropdown-item {
