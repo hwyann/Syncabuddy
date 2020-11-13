@@ -3,7 +3,7 @@ class MatchesController < ApplicationController
 
   def index
     if params[:query].present?
-      @matches = policy_scope(Match).search_by_sport_location_description(params[:query])
+      @matches = policy_scope(Match).search_by_sport_city_description(params[:query])
       @query = params[:query]
     else
       @matches = policy_scope(Match)
@@ -47,6 +47,6 @@ class MatchesController < ApplicationController
   private
 
   def matches_params
-    params.require(:match).permit(:date, :description, :sport, :location, :photo)
+    params.require(:match).permit(:date, :description, :sport, :location, :city, :photo)
   end
 end
